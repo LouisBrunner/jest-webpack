@@ -49,7 +49,7 @@ function run(argv, webpackConfig) {
   }
 
   if (typeof webpackConfig.then === 'function') {
-    webpackConfig.then(function(config) {run(argv, config);})
+    webpackConfig.then(function(config) {run(jestArgvPortion, config);})
     .catch(function(err) {
       console.error(err.stack || err);
       process.exit();
@@ -77,7 +77,7 @@ function run(argv, webpackConfig) {
     process.env.NODE_ENV = 'test';
   }
 
-  main(argv, webpackConfig);
+  main(jestArgvPortion, webpackConfig);
 }
 
 if (process.mainModule === module) {
